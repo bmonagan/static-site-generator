@@ -23,7 +23,7 @@ class HTMLNode:
         for k, v in items:
             res.append(f'{k}="{v}"')
 
-        return " " + " ".join(res)
+        return " ".join(res)
 
     def __repr__(self):
         return f"HTMLNode({self.tag}, {self.value},{self.children}, {self.props})"
