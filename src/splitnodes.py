@@ -1,24 +1,26 @@
 from textnode import TextNode,TextType
-import re 
+f
 def split_nodes_delimiter(old_nodes,delimiter,text_type):
-    
-    split_nodes = re.split(r'(?<=`)', old_nodes)
-    deli = False
-    result = []
-    for node in split_nodes:
-        if deli:
-            if node[-1] != delimiter:
-                raise ValueError("Must have a paired delimeter")
+    new_nodes = []
+
+    for node in old_nodes:
+        if node.text_type != TextType.TEXT:
+            new_nodes.append(node)
+            continue
+
+        section = node.split(delimiter)
+        split_nodes = []
+        for i in range(len(section)):
+            part = section[i]
+            if part == "":
+                continue
+            if i % 2 == 0:
+                node = TextNode(part, TextType.TEXT)
             else:
-                result.append(TextNode(node[:-1], text_type))
-                deli = False
-            
-        if node[-1] == delimiter:
-            deli = True
-            result.append(TextNode(node[:-1]),TextType.TEXT)
-        else:
-            result.append(TextNode(node),TextType.TEXT)
+                node = TextNode(part, text_type)
+                split_nodes.append(node)
+        new_nodes.extend(split_nodes)
     
-    return result
+    return new_nodes
 
 
