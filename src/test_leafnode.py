@@ -16,7 +16,6 @@ class TestLeafNode(unittest.TestCase):
         node = LeafNode("a", "Click me!", props)
         expected_html_1 = '<a href="https://boot.dev" target="_blank">Click me!</a>'
         expected_html_2 = '<a target="_blank" href="https://boot.dev">Click me!</a>'
-        print(node)
         actual_html = node.to_html()
         
         
