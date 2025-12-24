@@ -19,6 +19,9 @@ def split_nodes_image(old_nodes):
                 node = TextNode(sections[i],TextType.IMAGE,sections[i+1])
                 i += 2     
             else:
+                if sections[i] == None or sections[i] == "":
+                    i += 1 
+                    continue
                 node = TextNode(sections[i],TextType.TEXT)
                 i += 1 
             
@@ -45,6 +48,9 @@ def split_nodes_link(old_nodes):
                 node = TextNode(sections[i],TextType.LINK,sections[i+1])
                 i += 2     
             else:
+                if sections[i] == None or sections[i] == "":
+                    i += 1 
+                    continue
                 node = TextNode(sections[i],TextType.TEXT)
                 i += 1 
             
