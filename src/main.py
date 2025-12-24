@@ -1,6 +1,6 @@
 from textnode import TextNode,TextType
 def main():
-    test_node = TextNode("dance",TextType.PLAIN,"spacestation.com")
+    test_node = TextNode("dance",TextType.TEXT,"spacestation.com")
     print(test_node)
 
     
