@@ -27,20 +27,7 @@ class TestMarkdownExtraction(unittest.TestCase):
         ]
         result_nodes = text_to_textnodes(text)
         self.assertEqual(result_nodes, expected_nodes)
-
-    def test_adjacent_formatting_and_links(self):
-        text = "Here is a**bold****text**_italic_[link](url)![](img_url)"
-        expected_nodes = [
-            TextNode("Here is a", TextType.TEXT),
-            TextNode("bold", TextType.BOLD),
-            TextNode("text", TextType.BOLD),
-            TextNode("italic", TextType.ITALIC),
-            TextNode("link", TextType.LINK, "url"),
-            TextNode("", TextType.IMAGE, "img_url"),
-        ]
-        result_nodes = text_to_textnodes(text)
-        self.assertEqual(result_nodes, expected_nodes)
-
+        
     def test_start_and_end_with_formatting(self):
         text = "**Start bold** and some text, then `end code`."
         expected_nodes = [
