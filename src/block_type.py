@@ -17,7 +17,7 @@ def block_to_block_type(markdown):
     elif md_len > 6 and markdown[:3] == markdown[md_len-3 : md_len] == "```":
         return BlockType.CODE
     line_split = markdown.split("\n")
-    if all(line[0]  == ">" for line in line_split):
+    if all(len(line) > 2 and line[0]  == "> " for line in line_split):
         return BlockType.QUOTE
     elif all(line[0] == "-" for line in line_split ):
         return BlockType.UNORDERED_LIST
