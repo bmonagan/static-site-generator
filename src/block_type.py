@@ -14,7 +14,7 @@ def block_to_block_type(markdown):
 
     if markdown[0] == "#":
         return BlockType.HEADING
-    elif md_len > 6 and markdown[:3] == markdown[md_len-3 : md_len] == "'''":
+    elif md_len > 6 and markdown[:3] == markdown[md_len-3 : md_len] == "```":
         return BlockType.CODE
     line_split = markdown.split("\n")
     if all(line[0]  == ">" for line in line_split):
