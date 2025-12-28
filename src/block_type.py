@@ -24,11 +24,12 @@ def block_to_block_type(markdown):
     elif all(line[0].isnumeric() for line in line_split):
         if line_split[0][1] != ".":
             return BlockType.PARAGRAPH
-        list_num = line_split[0][0]
+        current_num = int(line_split[0][0])
         for line in line_split[1:]:
-            if line[0] != list_num + 1 or line[1] != ".":
+            line_number = int(line[0])
+            if line_number != current_num + 1 or line[1] != ".":
                 return BlockType.PARAGRAPH
-            list_num = line[0]
+            current_num = line_number
             
         return BlockType.ORDERED_LIST
     
