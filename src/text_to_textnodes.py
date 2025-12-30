@@ -14,7 +14,6 @@ def text_to_textnodes(text):
         old_nodes = split_nodes_delimiter(old_nodes,v,k)  
     
     link_split = split_nodes_link(old_nodes)
-    print(link_split)
     result = split_nodes_image(link_split)
     
    
