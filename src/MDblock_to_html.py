@@ -18,10 +18,12 @@ def markdown_to_html_node(markdown):
             code_htmlnode = text_node_to_html_node(code_node)
             complete_children.append(code_htmlnode) 
         else:
-            children_nodes = text_to_children(block)
+            normalized_text = block.replace("\n", " ")
+            children_nodes = text_to_children(normalized_text)
             smaller_parent = ParentNode(tag = parent_tag, children = children_nodes)
             complete_children.append(smaller_parent)
     parent_html_node = ParentNode(tag= "div", children= complete_children)
+    
     return parent_html_node
 
 
@@ -35,4 +37,4 @@ This is another paragraph with _italic_ text and `code` here
 
 """
 
-print(markdown_to_html_node(md))
+print(markdown_to_html_node(md).to_html())

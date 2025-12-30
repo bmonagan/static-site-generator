@@ -23,4 +23,4 @@ This is another paragraph with _italic_ text and `code` here
 
 """
 
-print(text_to_children(md))
+text_to_children(md)
