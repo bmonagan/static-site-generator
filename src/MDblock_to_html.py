@@ -2,6 +2,7 @@ from block_type import BlockType, block_to_block_type
 from markdown_blocks import markdown_to_blocks
 from text_to_textnodes import text_to_textnodes
 from parentnode import ParentNode
+from text_to_children import text_to_children
 
 def markdown_to_html_node(markdown):
     blocks = markdown_to_blocks(markdown)
@@ -10,14 +11,10 @@ def markdown_to_html_node(markdown):
     print(blocks)
     for block in blocks:
         parent_tag = block_to_block_type(block)
-        split_nodes = text_to_textnodes(block)
-        print(split_nodes)
-        # parent_node = ParentNode(parent_tag,split_nodes)
-        # parent_html = parent_node.to_html()
-        # print(parent_html)
-        # blocks are html parents
-        # each additional thing inside is a 
-
+        if parent_tag == BlockType.CODE:
+            # textnode -> text node to html node
+        else:
+            children_nodes = text_to_children(block)
         
 
 
