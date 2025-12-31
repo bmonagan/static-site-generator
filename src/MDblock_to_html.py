@@ -5,6 +5,8 @@ from parentnode import ParentNode
 from text_to_children import text_to_children
 from textnode import TextNode, TextType
 from textTransform import text_node_to_html_node
+from block_type_to_html_tag import block_type_to_html_tag
+
 
 def markdown_to_html_node(markdown):
     blocks = markdown_to_blocks(markdown)
@@ -12,8 +14,9 @@ def markdown_to_html_node(markdown):
         raise ValueError("Must be a non-empty markdown")
     complete_children = []
     for block in blocks:
-        parent_tag = block_to_block_type(block)
-        if parent_tag == BlockType.CODE:
+        parent_tag_type = block_to_block_type(block)
+        parent_tag = block_type_to_html_tag(parent_tag_type)
+        if parent_tag_type == BlockType.CODE:
             code_node = TextNode(block, TextType.CODE)
             code_htmlnode = text_node_to_html_node(code_node)
             complete_children.append(code_htmlnode) 
