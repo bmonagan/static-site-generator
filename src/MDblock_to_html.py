@@ -1,6 +1,5 @@
 from block_type import BlockType, block_to_block_type
 from markdown_blocks import markdown_to_blocks
-from text_to_textnodes import text_to_textnodes
 from parentnode import ParentNode
 from text_to_children import text_to_children
 from textnode import TextNode, TextType
