@@ -1,12 +1,12 @@
 from block_type import BlockType
 
 html_tag_map = {
-    "PARAGRAPH": "p",
-    "HEADING": "h1",  
-    "CODE": "pre",    
-    "QUOTE": "blockquote",
-    "UNORDERED_LIST": "ul",
-    "ORDERED_LIST": "ol"
+    BlockType.PARAGRAPH: "p",
+    BlockType.HEADING: "h1",
+    BlockType.CODE: "pre",
+    BlockType.QUOTE: "blockquote",
+    BlockType.UNORDERED_LIST: "ul",
+    BlockType.ORDERED_LIST: "ol"
 }
 
 
