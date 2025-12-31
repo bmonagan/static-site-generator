@@ -22,5 +22,6 @@ tag here
 This is another paragraph with _italic_ text and `code` here
 
 """
+normalized_text = md.replace("\n", " ")
 
-text_to_children(md)
+print(text_to_children(normalized_text))

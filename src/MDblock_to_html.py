@@ -20,7 +20,7 @@ def markdown_to_html_node(markdown):
             code_htmlnode = text_node_to_html_node(code_node)
             complete_children.append(code_htmlnode) 
         else:
-            normalized_text = block.replace("\n", " ")
+            normalized_text = block #block.replace("\n", " ")
             children_nodes = text_to_children(normalized_text)
             smaller_parent = ParentNode(tag = parent_tag, children = children_nodes)
             complete_children.append(smaller_parent)
@@ -38,5 +38,8 @@ tag here
 This is another paragraph with _italic_ text and `code` here
 
 """
+desired_output =  "<div><p>This is <b>bolded</b> paragraph text in a p tag here</p><p>This is another paragraph with <i>italic</i> text and <code>code</code> here</p></div>"
 
-print(markdown_to_html_node(md).to_html())
+output = markdown_to_html_node(md).to_html()
+print(output)
+assert output == desired_output
