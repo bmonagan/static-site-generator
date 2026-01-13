@@ -8,20 +8,3 @@ def text_to_children(text):
         children.append(converted)
     
     return children
-
-
-
-
-
-
-md = """
-This is **bolded** paragraph
-text in a p
-tag here
-
-This is another paragraph with _italic_ text and `code` here
-
-"""
-normalized_text = md.replace("\n", " ")
-
-print(text_to_children(normalized_text))
