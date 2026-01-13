@@ -25,10 +25,15 @@ def markdown_to_html_node(markdown):
             if code_text.endswith("```"):
                 code_text = code_text[:-3]
             code_text = code_text.strip()
+            # Strip leading indentation from each line
+            lines = code_text.split("\n")
+            dedented_lines = [line.lstrip() for line in lines]
+            code_text = "\n".join(dedented_lines) + "\n"
             code_node = TextNode(code_text, TextType.CODE)
             code_htmlnode = text_node_to_html_node(code_node)
             parent = ParentNode(tag=parent_tag, children=[code_htmlnode])
             complete_children.append(parent)
+        
         
         elif tag_type in [BlockType.UNORDERED_LIST, BlockType.ORDERED_LIST]:
             # 1. Process line by line, 2. Strip list markers, 3. Create <li> children, 
@@ -83,6 +88,8 @@ def markdown_to_html_node(markdown):
         else: # BlockType.PARAGRAPH
             # This is your current generic logic, which is fine for paragraphs.
             normalized_text = block.replace("\n", " ")
+            # Normalize multiple spaces to single space
+            normalized_text = " ".join(normalized_text.split())
             children_nodes = text_to_children(normalized_text)
             parent = ParentNode(tag=parent_tag, children=children_nodes)
             complete_children.append(parent)
