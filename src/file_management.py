@@ -26,6 +26,3 @@ def copy_static_to_public():
             shutil.copytree(s, d, dirs_exist_ok=True)
         else:
             shutil.copy2(s, d)
-
-
-copy_static_to_public()
