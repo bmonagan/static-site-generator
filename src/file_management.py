@@ -1,9 +1,6 @@
 import os
 import shutil
 
-
-statis = os.listdir(path="./static")
-
 def clear_public():
     if not os.path.exists("./public"):
         os.mkdir("./public")
@@ -17,7 +14,11 @@ def clear_public():
 
 def copy_static_to_public():
     clear_public()
-    for item in statis:
+    static = os.listdir(path="./static")
+    if not static:
+        print("No files in static directory to copy")
+        return
+    for item in static:
         print(f"Copying {item} from static to public")
         s = os.path.join("./static", item)
         d = os.path.join("./public", item)
