@@ -70,16 +70,17 @@ def markdown_to_html_node(markdown):
             complete_children.append(parent)
 
         elif tag_type == BlockType.QUOTE:
-            # 1. Strip the leading '> ' from each line.
+            # 1. Strip the leading '>' from each line.
             # 2. Combine the lines (or process separately).
             # 3. Create the <blockquote> parent.
             lines = block.split("\n")
             quote_lines = []
             for line in lines:
-                if line.startswith("> "):
-                    quote_lines.append(line[2:])
-                else:
-                    quote_lines.append(line)
+                line = line.strip()
+                if line.startswith(">"):
+                    # Remove the '>' and any following space
+                    line = line[1:].strip()
+                quote_lines.append(line)
             quote_text = " ".join(quote_lines)
             children_nodes = text_to_children(quote_text)
             parent = ParentNode(tag=parent_tag, children=children_nodes)
