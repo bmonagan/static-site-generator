@@ -10,7 +10,7 @@ def generate_page(from_path, template_path, dest_path):
     html_node = markdown_to_html_node(markdown)
     html_content = html_node.to_html()
 
-    final_html = template.replace("{{title}}", title).replace("{{content}}", html_content)
+    final_html = template.replace("{{ Title }}", title).replace("{{ Content }}", html_content)
 
     os.makedirs(os.path.dirname(dest_path), exist_ok=True)
     with open(dest_path, "w") as f:
