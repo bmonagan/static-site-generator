@@ -77,11 +77,12 @@ def markdown_to_html_node(markdown):
             quote_lines = []
             for line in lines:
                 line = line.strip()
+                # All lines in a quote block should start with >
                 if line.startswith(">"):
                     # Remove the '>' and any following space
                     line = line[1:].strip()
                 quote_lines.append(line)
-            quote_text = " ".join(quote_lines)
+            quote_text = "\n".join(quote_lines)
             children_nodes = text_to_children(quote_text)
             parent = ParentNode(tag=parent_tag, children=children_nodes)
             complete_children.append(parent)
