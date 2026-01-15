@@ -61,10 +61,13 @@ def markdown_to_html_node(markdown):
             complete_children.append(parent)
             
         elif tag_type == BlockType.HEADING:
-            # 1. Strip the leading '#' characters and space.
-            # 2. Proceed with inline processing on the remaining text.
-            # 3. Create the <hX> parent.
+            # 1. Count the '#' characters for heading level.
+            # 2. Strip the leading '#' characters and space.
+            # 3. Proceed with inline processing on the remaining text.
+            # 4. Create the <hX> parent.
+            heading_level = len(block) - len(block.lstrip("#"))
             heading_text = block.lstrip("#").strip()
+            parent_tag = block_type_to_html_tag(tag_type, heading_level=heading_level)
             children_nodes = text_to_children(heading_text)
             parent = ParentNode(tag=parent_tag, children=children_nodes)
             complete_children.append(parent)
